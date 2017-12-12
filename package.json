@@ -1,0 +1,26 @@
+{
+  "name": "youtube",
+  "version": "1.0.0",
+  "description": "A YouTube clone to test ad completion rates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/YouTube-Clone/youtube.git"
+  },
+  "author": "Andrew Chen, Toby Hoshman, Jon Lau, Jinxuan Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YouTube-Clone/youtube/issues"
+  },
+  "homepage": "https://github.com/YouTube-Clone/youtube#readme",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
