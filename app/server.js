@@ -9,4 +9,8 @@ app.get("/", (request, response) => {
   response.send("Get request to `/` received.");
 });
 
+app.post('/event_log', (request, responce) => {
+  responce.send('event log endpoint recieved')
+})
+
 module.exports = server;  
