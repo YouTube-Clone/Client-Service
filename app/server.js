@@ -10,7 +10,7 @@ app.get("/", (request, response) => {
 });
 
 app.post('/event_log', (request, responce) => {
-  responce.send('event log endpoint recieved.')
+  responce.send('event log endpoint recieved')
 })
 
 module.exports = server;  
