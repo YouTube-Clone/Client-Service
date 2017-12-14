@@ -1,5 +1,6 @@
 const express = require('express');
-const elastic = require('./elastic.js')
+const elastic = require('./elastic.js');
+// const init = require('./initializeElastic');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const HOST = "0.0.0.0";
@@ -13,5 +14,7 @@ app.get("/", (request, response) => {
 app.post('/event_log', (request, responce) => {
   responce.send('event log endpoint recieved')
 })
+
+// init();
 
 module.exports = server;  
