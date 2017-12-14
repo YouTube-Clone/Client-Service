@@ -1,6 +1,6 @@
 const should = require('chai').should();
 const server = require('../app/server.js')
-const elastic = require("../elastic.js");
+const elastic = require("../app/elastic.js");
 expect = require('chai').expect;
 supertest = require('supertest');
 api = supertest('http://localhost:8080');
