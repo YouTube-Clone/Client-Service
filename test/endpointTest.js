@@ -1,5 +1,6 @@
 const should = require('chai').should();
 const server = require('../app/server.js')
+const elastic = require("./elastic.js");
 expect = require('chai').expect;
 supertest = require('supertest');
 api = supertest('http://localhost:8080');
@@ -29,5 +30,6 @@ describe('Server Tests', function() {
 });
 
 after(function(done){
-  server.close(done);
+  server.close();
+  client.close(done);
 })
