@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon app/server.js",
     "test": "mocha",
-    "pop": " node app/initializeElastic.js"
+    "pop": " node app/initializeElastic.js",
+    "add": " node app/addElastic.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "faker": "^4.1.0",
     "mocha": "^4.0.1",
     "supertest": "^3.0.0"
   },
