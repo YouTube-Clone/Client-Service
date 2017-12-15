@@ -5,15 +5,6 @@ const client = new elasticsearch.Client({
   log: "trace"
 });
 
-function addDocument(document) {
-  return client.index({
-    index: 'videos',
-    type: 'document',
-    body: {
-      title:document.title,
-    }
-  })
-}
 
 // client.ping(
 //   {requestTimeout: 30000},

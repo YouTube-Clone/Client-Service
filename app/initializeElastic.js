@@ -1,13 +1,8 @@
-const elasticsearch = require("elasticsearch");
-
-const client = new elasticsearch.Client({
-  host: "localhost:9200",
-  log: "trace"
-});
+const client = require('./elastic.js');
 
 function indexExists() {
   return client.indices.exists({
-    index: "videos"
+    index: 'videos'
   });
 }
 
@@ -25,11 +20,19 @@ const initIndex = () => {
 
 function initMapping() {
   return client.indices.putMapping({
-    index: "videos",
-    type: "document",
+    index: 'videos',
+    type: 'document',
     body: {
       properties: {
-        title: { type: "text" },
+        videoId: { type: 'text' },
+        imageUrl: { type: 'text' }, 
+        title: { type: 'text' },
+        length: { type: 'integer' },
+        description: {type: 'text' },
+        viewCount: {type: 'integer'},
+        creator: {type: 'text'},
+        creation: {type: 'date' },
+        verified: {type: 'text'},
       }
     }
   });
