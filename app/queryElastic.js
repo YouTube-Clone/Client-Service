@@ -1,12 +1,12 @@
 const client = require("./elastic.js");
 
-const search = () => {
+const search = (query, callback) => {
   return client.search({
-  q: "soap"
+  q: query
     })
     .then(
       function(body) {
-        console.log(body, 'body ');
+        callback(body)
       },
       function(error) {
         console.trace(error.message);
@@ -14,4 +14,4 @@ const search = () => {
     );
 }
 
-search();
+module.exports = search;

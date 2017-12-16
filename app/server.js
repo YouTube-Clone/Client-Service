@@ -1,23 +1,26 @@
 const express = require('express');
 const elastic = require('./elastic.js');
+const search = require('./queryElastic.js')
 const app = express();
 const PORT = process.env.PORT || 8080;
 const HOST = "0.0.0.0";
 
 const server = app.listen(PORT, HOST);
 
-app.get('videos/:video_id', (requuest, responce) => {
-  // get videos from video database when play
+// get videos from video database when play
+app.get('videos/:video_id', (request, responce) => {
   responce.send('video from databse');
 });
 
+//searches for video in cache and sends back videos
 app.get('/videos/search', (request, responce) => {
-  //searches for video in cache
-  responce.send("query results");
+  search(request.query.query, (results) => {
+    responce.send(results.hits.hits);
+  })
 })
 
+//logs event
 app.post('/videos/:video_id?type=update', (request, responce) => {
-  //logs event
   responce.send('event log updated');
 });
 
@@ -32,6 +35,3 @@ app.patch('/videos/:video_id?type=like', (request, responce) => {
 });
 
 module.exports = server;  
-
-// POST: /videos/:video_id?type=update
-
