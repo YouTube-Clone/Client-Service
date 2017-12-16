@@ -7,7 +7,8 @@
     "start": "nodemon app/server.js",
     "test": "mocha",
     "pop": " node app/initializeElastic.js",
-    "add": " node app/addElastic.js"
+    "add": " node app/addElastic.js",
+    "search": "node app/queryElastic.js"
   },
   "repository": {
     "type": "git",
