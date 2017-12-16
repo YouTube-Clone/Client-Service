@@ -1,8 +1,6 @@
 const client = require("./elastic.js");
 const faker = require('faker');
 
-
-
 function addDocument() {
   let id = faker.random.alphaNumeric();
   let image = faker.random.image();
@@ -32,8 +30,6 @@ function addDocument() {
     }
   });
 }
-addDocument();
-
 
 let count = 10000000;
 
@@ -56,9 +52,3 @@ const add = function(count) {
 }
 
 add(count);
-
-  // addDocument().then(() => {
-  //   count = count - 20;
-  //   add(count)
-  //   console.log(count);
-  // });

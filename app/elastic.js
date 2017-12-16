@@ -6,20 +6,6 @@ const client = new elasticsearch.Client({
 });
 
 
-// client.ping(
-//   {requestTimeout: 30000},
-//   function(error) {
-//     if (error) {
-//       console.error("elasticsearch cluster is down!");
-//     } else {
-//       console.log("Elastic search connection is running.");
-//     }
-//   }
-// );
-
-
-
-
 // function getSuggestions(input) {
 //   return elasticClient.suggest({
 //     index: indexName,
