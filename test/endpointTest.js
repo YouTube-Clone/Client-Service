@@ -25,9 +25,9 @@ describe('Server Tests', function() {
       .expect(404, done);
   })
 
-  it('should return a 200 responce when a get request is sent to the /videos/search?query enpoint', function(done) {
+  it('should return a 200 responce when a get request is sent to the /videos/search enpoint', function(done) {
     supertest(server)
-      .get('/videos/search')
+      .get('/videos/search', 'cat')
       .expect(200, done);
   });
 });
