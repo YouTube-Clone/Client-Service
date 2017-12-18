@@ -1,37 +1,80 @@
 const express = require('express');
 const elastic = require('./elastic.js');
+const search = require('./queryElastic.js')
+const requester = require('request'); 
 const app = express();
 const PORT = process.env.PORT || 8080;
 const HOST = "0.0.0.0";
 
 const server = app.listen(PORT, HOST);
 
-app.get('videos/:video_id', (requuest, responce) => {
-  // get videos from video database when play
-  responce.send('video from databse');
+// get videos from video database when play
+app.get('/videos/:video_id', (request, responce) => {
+  requester({
+    uri: "video service url + request.params.video_id",
+    method: 'GET'
+  }, function(error, request, body) {
+      responce.send(body)
+    }
+  )
 });
 
+//searches for video in cache and sends back videos
 app.get('/videos/search', (request, responce) => {
-  //searches for video in cache
-  responce.send("query results");
+  search(request.query.query, (results) => {
+    responce.send(results.hits.hits);
+  })
 })
 
-app.post('/videos/:video_id?type=update', (request, responce) => {
-  //logs event
-  responce.send('event log updated');
+//logs event
+app.post('/videos/:video_id/log', (request, responce) => { 
+  requester(
+    {
+      uri: "log video endpoint",
+      method: "post",
+      body: {
+        cookie: "a;sdfk;sldkf", //request cookie goes here
+        date: "12/8/2017 11:09 am", //request date goes here
+        action: "play" //request action goes here
+      }
+    },
+    (error, request, body) => {
+      responce.send("event log updated");
+    }
+  );
 });
 
 app.post('/videos', (request, responce) => {
-  //add a video to cache and databse
-  responce.send('video added to database');
+  requester(
+    {
+      uri: "video post database", //real enpoint here
+      method: "POST",
+      body: {
+        title: "test", //request title goes here
+        creator: "blah", // request creator goes here
+        video: "ikr" //actual video goes here
+      }
+    },
+    (error, request, body) => {
+      responce.send("video added to database");
+    }
+  );
 })
 
-app.patch('/videos/:video_id?type=like', (request, responce) => {
-  //update the like value in cache and in db
-  responce.send('like or dislike count updated');
+app.patch('/videos/:video_id', (request, responce) => {
+  requester(
+    {
+      uri: "video endpoint", //real endpoint here
+      method: "patch",
+      body: {
+        video_id: "lsakdjf", //request id here
+        action: "increase or decrease" //request action here
+      }
+    },
+    (error, request, body) => {
+      responce.send("like or dislike count updated");
+    }
+  );
 });
 
 module.exports = server;  
-
-// POST: /videos/:video_id?type=update
-
