@@ -9,25 +9,25 @@ const HOST = "0.0.0.0";
 const server = app.listen(PORT, HOST);
 
 // get videos from video database when play
-app.get('/videos/:video_id', (request, responce) => {
+app.get('/videos/:video_id', (request, response) => {
   requester({
     uri: "video service url + request.params.video_id",
     method: 'GET'
   }, function(error, request, body) {
-      responce.send(body)
+      response.send(body)
     }
   )
 });
 
 //searches for video in cache and sends back videos
-app.get('/videos/search', (request, responce) => {
+app.get('/videos/search', (request, response) => {
   search(request.query.query, (results) => {
-    responce.send(results.hits.hits);
+    response.send(results.hits.hits);
   })
 })
 
 //logs event
-app.post('/videos/:video_id/log', (request, responce) => { 
+app.post('/videos/:video_id/log', (request, response) => { 
   requester(
     {
       uri: "log video endpoint",
@@ -39,12 +39,12 @@ app.post('/videos/:video_id/log', (request, responce) => {
       }
     },
     (error, request, body) => {
-      responce.send("event log updated");
+      response.send("event log updated");
     }
   );
 });
 
-app.post('/videos', (request, responce) => {
+app.post('/videos', (request, response) => {
   requester(
     {
       uri: "video post database", //real enpoint here
@@ -56,12 +56,12 @@ app.post('/videos', (request, responce) => {
       }
     },
     (error, request, body) => {
-      responce.send("video added to database");
+      response.send("video added to database");
     }
   );
 })
 
-app.patch('/videos/:video_id', (request, responce) => {
+app.patch('/videos/:video_id', (request, response) => {
   requester(
     {
       uri: "video endpoint", //real endpoint here
@@ -72,7 +72,7 @@ app.patch('/videos/:video_id', (request, responce) => {
       }
     },
     (error, request, body) => {
-      responce.send("like or dislike count updated");
+      response.send("like or dislike count updated");
     }
   );
 });
