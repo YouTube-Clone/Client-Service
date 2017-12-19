@@ -2,36 +2,35 @@ const client = require("./elastic.js");
 const faker = require('faker');
 
 function addDocument() {
-  let id = faker.random.alphaNumeric();
-  let image = faker.random.image();
-  let videoTitle = faker.random.words();
+  let videoId = faker.random.alphaNumeric();
+  let imageUrl = faker.random.image();
+  let title = faker.random.words();
   let length = faker.random.number();
   let description = faker.lorem.paragraph();  
   let viewCount = faker.random.number();
-  let name = faker.name.findName();
-  let created = faker.date.past();
-  let verify = faker.random.boolean();
+  let creator = faker.name.findName();
+  let creation = faker.date.past();
+  let verified = faker.random.boolean();
 
 
   return client.index({
     index: 'videos',
     type: "document" ,
     body: {
-      videoId: id,
-      imageUrl: image,
-      title: videoTitle, 
-      length: length,
-      description: description,
-      viewCount: viewCount,
-      creator: name,
-      creation: created,
-      verified: verify,
+      videoId,
+      imageUrl,
+      title, 
+      length,
+      description,
+      viewCount,
+      creator,
+      creation,
+      verified,
 
     }
   });
 }
 
-let count = 10000000;
 
 const add = function(count) {
   for(let i = 0; i < 200; i++) {
@@ -51,4 +50,4 @@ const add = function(count) {
   }
 }
 
-add(count);
+add(1);
