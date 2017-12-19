@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app/server.js",
-    "test": "mocha"
+    "test": "mocha --exit",
+    "pop": " node app/initializeElastic.js",
+    "add": " node app/addElastic.js",
+    "search": "node app/queryElastic.js"
   },
   "repository": {
     "type": "git",
@@ -27,15 +30,16 @@
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "faker": "^4.1.0",
     "mocha": "^4.0.1",
+    "request": "^2.83.0",
     "supertest": "^3.0.0"
   },
   "dependencies": {
     "elasticsearch": "^14.0.0",
     "express": "^4.16.2",
     "nodemon": "^1.12.5",
-    "npm": "^5.6.0",
-    "request": "^2.83.0"
+    "npm": "^5.6.0"
   },
   "babel": {
     "presets": [
