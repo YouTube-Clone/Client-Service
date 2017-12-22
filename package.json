@@ -4,7 +4,7 @@
   "description": "A YouTube clone to test ad completion rates",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app/server.js",
+    "start": "cservice app/server.js --accessKey lksjdf982734",
     "test": "mocha --exit",
     "pop": " node app/initializeElastic.js",
     "add": " node app/addElastic.js",
@@ -27,6 +27,8 @@
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
+    "cluster-service": "^2.0.0",
+    "elastic-apm-node": "^0.9.0",
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
