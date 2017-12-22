@@ -50,4 +50,4 @@ const add = function(count) {
   }
 }
 
-add(1);
+add(10000000);
