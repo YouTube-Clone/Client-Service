@@ -4,7 +4,7 @@
   "description": "A YouTube clone to test ad completion rates",
   "main": "index.js",
   "scripts": {
-    "start": "cservice app/server.js --accessKey lksjdf982734",
+    "start": "nodemon app/server.js",
     "test": "mocha --exit",
     "pop": " node app/initializeElastic.js",
     "add": " node app/addElastic.js",

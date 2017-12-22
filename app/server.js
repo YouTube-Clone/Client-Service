@@ -26,13 +26,14 @@ app.get('/videos/:video_id/play', (request, response) => {
 
 //searches for video in cache and sends back videos
 app.get('/videos/search', (request, response) => {
-  search(request.query.query, (results) => {
-    response.send(results.hits.hits);
-  })
-})
+  // search(request.query.query, (results) => {
+  //   response.send(results.hits.hits);
+  // })
+  console.log(request.query);
+});
 
 //logs event
-app.post('/videos/:video_id/log', (request, response) => { 
+app.post('/video/:video_id/log', (request, response) => { 
   requester(
     {
       uri: "log video endpoint",
@@ -66,7 +67,7 @@ app.post('/videos', (request, response) => {
   );
 })
 
-app.patch('/videos/:video_id', (request, response) => {
+app.patch('/video/:video_id', (request, response) => {
   requester(
     {
       uri: "video endpoint", //real endpoint here
