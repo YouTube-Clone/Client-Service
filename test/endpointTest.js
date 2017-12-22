@@ -27,7 +27,8 @@ describe('Server Tests', function() {
 
   it('should return a 200 response when a get request is sent to the /videos/search enpoint', function(done) {
     supertest(server)
-      .get('/videos/search', 'cat')
+      .get('/videos/search', done)
+      .query({ query: 'soap' })
       .expect(200, done);
   });
 });
