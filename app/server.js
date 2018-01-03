@@ -49,34 +49,29 @@ app.post('/videos/:video_id/log', (request, response) => {
 });
 
 app.post('/videos', (request, response) => {
-  requester(
-    {
-      uri: 'video post database', //real enpoint here
-      method: 'POST',
-      body: {
-        title: 'test', //request title goes here
-        creator: 'blah', // request creator goes here
-        video: 'ikr' //actual video goes here
-      }
-    },
-    (error, request, body) => {
+  requester({
+    uri: '/videos',
+    method: 'POST',
+    body: {
+      title: request.body.title, 
+      creator: request.body.creator,
+      video: request.body.video, 
+    }
+  },(error, request, body) => {
       response.send('video added to database');
     }
   );
 })
 
 app.patch('/video/:video_id', (request, response) => {
-  requester(
-    {
-      uri: 'video endpoint', //real endpoint here
-      method: 'patch',
-      body: {
-        video_id: 'lsakdjf', //request id here
-        action: 'increase or decrease' //request action here
-      }
-    },
-    (error, request, body) => {
-      response.send('like or dislike count updated');
+  requester({
+    uri: `/video/${request.params.video_id}`,
+    method: 'PATCH',
+    body: {
+      action: request.body.action,
+    }
+  },(error, request, body) => {
+      response.send('video updated');
     }
   );
 });
