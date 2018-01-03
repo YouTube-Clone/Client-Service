@@ -19,10 +19,11 @@ describe('Video Search Endpoint Tests', () => {
       .expect(404, done);
   });
 
+  // doesn't work unless server elastic server is running
   // it('should return a 200 response when a get request is sent to the /videos/search enpoint', function(done) {
   //   supertest(server)
   //     .get('/videos/search', done)
-  //     .query({ query: 'soap' })
+  //     // .query({ query: 'soap' })
   //     .expect(200, done);
   // });
 });
