@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-cd ~/bin
+cd ~/deployment-root
 ls
 
 npm install
