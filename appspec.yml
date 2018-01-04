@@ -9,18 +9,18 @@ hooks:
       timeout: 300
       runas: root
   AfterInstall:
-    - location: post_install.sh
+    - location: scripts/post_install.sh
       timeout: 600
       runas: ec2-user
   ApplicationStart:
-    - location: run.sh
+    - location: scripts/run.sh
       timeout: 120
       runas: ec2-user
   ApplicationStop:
-    - location: stop.sh
+    - location: scripts/stop.sh
       timeout: 120
       runas: ec2-user
   ValidateService:
-    - location: validate.sh
+    - location: scripts/validate.sh
       timeout: 60
       runas: ec2-user
