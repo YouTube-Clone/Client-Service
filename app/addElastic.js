@@ -1,53 +1,46 @@
-const client = require("./elastic.js");
+const client = require('./elastic.js');
 const faker = require('faker');
 
 function addDocument() {
-  let videoId = faker.random.alphaNumeric();
-  let imageUrl = faker.random.image();
-  let title = faker.random.words();
-  let length = faker.random.number();
-  let description = faker.lorem.paragraph();  
-  let viewCount = faker.random.number();
-  let creator = faker.name.findName();
-  let creation = faker.date.past();
-  let verified = faker.random.boolean();
-
+  const videoId = faker.random.alphaNumeric();
+  const imageUrl = faker.random.image();
+  const title = faker.random.words();
+  const length = faker.random.number();
+  const description = faker.lorem.paragraph();
+  const viewCount = faker.random.number();
+  const creator = faker.name.findName();
+  const creation = faker.date.past();
+  const verified = faker.random.boolean();
 
   return client.index({
     index: 'videos',
-    type: "document" ,
+    type: 'document',
     body: {
       videoId,
       imageUrl,
-      title, 
+      title,
       length,
       description,
       viewCount,
       creator,
       creation,
       verified,
-
-    }
+    },
   });
 }
 
-
-const add = function(count) {
-  for(let i = 0; i < 200; i++) {
+const add = (count) => {
+  for (let i = 0; i < 200; i += 1) {
     addDocument();
-    count--;
-    console.log(count);
     if (count === 0) {
       return;
     }
     if (i === 199) {
-      addDocument().then( () => {
-        count--;
-        console.log(count);
-        add(count);
-      })
+      addDocument().then(() => {
+        add(count - 200);
+      });
     }
   }
-}
+};
 
 add(10000000);

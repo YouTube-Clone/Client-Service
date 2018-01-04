@@ -1,23 +1,19 @@
-const client = require("./elastic.js");
+// const client = require('./elastic.js');
 
 const search = (query, callback) => {
   return client.search({
     index: 'videos',
     type: 'document',
-    body:{
+    body: {
       query: {
-        match: {"title": query}
+        match: { title: query },
       },
     },
-  })
-  .then(
-    function(body) {
-      callback(body);
-    },
-    function(error) {
-      callback(error.message);
-    }
-  );
-}
+  }).then((body) => {
+    callback(body);
+  }, (error) => {
+    callback(error.message);
+  });
+};
 
 module.exports = search;
