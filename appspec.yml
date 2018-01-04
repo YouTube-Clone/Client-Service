@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/node
+    destination: /app
 permissions:
   - object: /home/ec2-user
     owner: ec2-user

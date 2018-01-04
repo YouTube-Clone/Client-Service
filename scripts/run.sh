@@ -4,4 +4,4 @@ if [ ! -z "YouTube-Client" ]; then
 fi
 
 cd ~/node
-pm2 start bin/www -n www -i 0
+pm2 start server.js -n www -i 0
