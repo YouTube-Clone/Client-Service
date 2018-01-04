@@ -1,21 +1,26 @@
 version: 1.0
 os: linux
 files:
-    - source: /
-      destination: /app
+  - source: /
+    destination: /app/YouTube-Client
 hooks:
-#  ApplicationStop:
-#    - location: deployment.js
-#      timeout: 180
   BeforeInstall:
-    - location: deployment.js
-      timeout: 180
+    - location: install.sh
+      timeout: 300
+      runas: root
   AfterInstall:
-    - location: deployment.js
-      timeout: 180
+    - location: post_install.sh
+      timeout: 600
+      runas: ec2-user
   ApplicationStart:
-    - location: deployment.js
-      timeout: 180
+    - location: run.sh
+      timeout: 120
+      runas: ec2-user
+  ApplicationStop:
+    - location: stop.sh
+      timeout: 120
+      runas: ec2-user
   ValidateService:
-    - location: deployment.js
-      timeout: 180
+    - location: validate.sh
+      timeout: 60
+      runas: ec2-user
