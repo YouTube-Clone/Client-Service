@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 set -e
-
+cd ~/bin
 ls
-
-cd ~/Client-Service
 
 npm install
 
