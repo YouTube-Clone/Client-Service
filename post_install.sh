@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
+cd /app/YouTube-Client
+
+npm install
+
 # setup NODE_ENV
 if [ ! -z "YouTube-Client" ]; then
     export NODE_ENV='YouTube-Client'
