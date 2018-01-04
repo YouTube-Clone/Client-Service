@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 set -e
-cd ~/node
-ls
-
-npm install
 
 # setup NODE_ENV
 if [ ! -z "YouTube-Client" ]; then
