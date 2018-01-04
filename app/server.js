@@ -2,8 +2,8 @@
 //   appName: 'YouTube',
 // });
 const express = require('express');
-const elastic = require('./elastic.js');
-const search = require('./queryElastic.js');
+// const elastic = require('./elastic.js');
+// const search = require('./queryElastic.js');
 const requester = require('request'); 
 const bodyParser = require("body-parser");
 const app = express();
