@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /
+    destination: /home/ec2-user/node
 permissions:
-  - object: /
+  - object: /home/ec2-user
     owner: ec2-user
     group: ec2-user
     type:
@@ -28,6 +28,6 @@ hooks:
       timeout: 120
       runas: ec2-user
   ValidateService:
-    - location: scripts/validate.sh
+    - location: validate.sh
       timeout: 60
       runas: ec2-user
