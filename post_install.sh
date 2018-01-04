@@ -3,7 +3,7 @@ set -e
 
 # setup NODE_ENV
 if [ ! -z "YouTube-Client" ]; then
-    export NODE_ENV=YouTube-Client
+    export NODE_ENV='YouTube-Client'
 
     hasEnv=`grep "export NODE_ENV" ~/.bash_profile | cat`
     if [ -z "$hasEnv" ]; then
