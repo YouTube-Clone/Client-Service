@@ -5,4 +5,4 @@ fi
 
 cd /app/YouTube-Client
 
-npm start
+node app/server.js > /dev/null 2> /dev/null < /dev/null &
