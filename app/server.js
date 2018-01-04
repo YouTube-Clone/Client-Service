@@ -1,16 +1,13 @@
-// var apm = require('elastic-apm-node').start({
-//   appName: 'YouTube',
-// });
 const express = require('express');
 // const elastic = require('./elastic.js');
 // const search = require('./queryElastic.js');
 const requester = require('request'); 
 const bodyParser = require("body-parser");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
-// app.use(apm.middleware.express());
 app.use(bodyParser.json());
 
 const server = app.listen(PORT, HOST);
