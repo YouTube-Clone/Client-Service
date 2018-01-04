@@ -5,7 +5,7 @@ files:
     destination: /app/YouTube-Client
 hooks:
   BeforeInstall:
-    - location: install.sh
+    - location: scripts/install.sh
       timeout: 300
       runas: root
   AfterInstall:
